@@ -2827,7 +2827,7 @@ Command.Add({
 
 			Tweens.Open({ Canvas = Main, Speed = 0.3 })
 		else
-			Tweens.Open({ Canvas = Screen:FindFirstChild("Game Info"), Speed = 0.3 })
+			Tweens.Open({ Canvas = Screen:FindFirstChild("Script Hub"), Speed = 0.3 })
 		end
     end,
 })
