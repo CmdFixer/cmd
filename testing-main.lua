@@ -5,6 +5,8 @@
 	Testing: "https://raw.githubusercontent.com/lxte/cmd/main/testing-main.lua";
 ]]
 
+-- Script hub added by CmdFixer
+
 if not game:IsLoaded() then
 	warn("Waiting for the game to load..")
 	game.Loaded:Wait();
@@ -2753,6 +2755,81 @@ Command.Add({
 			Tweens.Open({ Canvas = Screen:FindFirstChild("Waypoints"), Speed = 0.3 })
 		end
 	end,
+})
+
+Command.Add({
+    Aliases = { "script", "scripts", },
+    Description = "Opens a script hub",
+    Arguments = {},
+    Plugin = false,
+    Task = function()
+        if not Screen:FindFirstChild("Script Hub") then
+            local Main = Tab.new({
+                Title = "Script Hub",
+                Drag = true
+            })
+            local Tabs = Main.Tabs
+            local MainTab = Tabs.Main.Scroll
+
+            Library.new("Button", { Title = "Infinite Yield",
+                Description = "The most popular admin script with 300+ commands",
+                Parent = MainTab,
+                Callback = function()
+                loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+                end,
+            })
+
+            Library.new("Button", { Title = "Orca Hub",
+                Description = "A great script hub with a nice looking ui",
+                Parent = MainTab,
+                Callback = function()
+                loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/richie0866/orca/master/public/latest.lua"))()
+                end,
+            })
+
+            Library.new("Button", { Title = "Sirius",
+                Description = "A smart script hub with many features",
+                Parent = MainTab,
+                Callback = function()
+                loadstring(game:HttpGet('https://sirius.menu/sirius'))()
+                end,
+            })
+
+            Library.new("Button", { Title = "Sky hub",
+                Description = "Over 50+ scripts. A huge script hub",
+                Parent = MainTab,
+                Callback = function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/FE%20Trolling%20GUI.luau"))()
+                end,
+            })
+
+            Library.new("Button", { Title = "Nameless Admin",
+                Description = "One of the best admin scripts with tons of features",
+                Parent = MainTab,
+                Callback = function()
+                loadstring(game:HttpGet('https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source'))()
+                end,
+            })
+
+            Library.new("Button", { Title = "Super Script Hub",
+                Description = "A script hub with over 400+ features",
+                Parent = MainTab,
+                Callback = function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/scripthubekitten/SCRIPTHUBV3/main/SCRIPTHUBV3", true))()
+                end,
+            })
+
+        Spawn(function()
+				repeat Wait(1)
+					DistributedText.Content.Description.Text = math.floor(workspace.DistributedGameTime)
+				until false
+			end)
+
+			Tweens.Open({ Canvas = Main, Speed = 0.3 })
+		else
+			Tweens.Open({ Canvas = Screen:FindFirstChild("Game Info"), Speed = 0.3 })
+		end
+    end,
 })
 
 Command.Add({
