@@ -5,7 +5,7 @@
 	Testing: "https://raw.githubusercontent.com/lxte/cmd/main/testing-main.lua";
 ]]
 
--- Script hub added by CmdFixer
+-- Script hub and extra themes added by CmdFixer
 
 if not game:IsLoaded() then
 	warn("Waiting for the game to load..")
@@ -1745,6 +1745,42 @@ Library.Themes = {
 		Library.LoadTheme()
 	end,
 
+    ["Vintage"] = function()
+	    local Old = Settings.Themes.Transparency
+
+		Settings.Themes = {
+			Primary = Color3.fromRGB(246,241,226),
+			Secondary = Color3.fromRGB(238,233,220),
+			Title = Color3.fromRGB(108,104,94),
+			Description = Color3.fromRGB(125,117,98),
+			Icon = Color3.fromRGB(136,131,110),
+			Shadow = Color3.fromRGB(176,176,176),
+			Outline = Color3.fromRGB(235,224,201),
+			Transparency = Old,
+			Mode = "Light",
+		}
+
+		Library.LoadTheme()
+	end,
+
+    ["Bubbly"] = function()
+	    local Old = Settings.Themes.Transparency
+
+		Settings.Themes = {
+			Primary = Color3.fromRGB(235,253,252),
+			Secondary = Color3.fromRGB(227,245,245),
+			Title = Color3.fromRGB(119,137,137),
+			Description = Color3.fromRGB(104,120,120),
+			Icon = Color3.fromRGB(154,171,171),
+			Shadow = Color3.fromRGB(220,243,242),
+			Outline = Color3.fromRGB(222,241,241),
+			Transparency = Old,
+			Mode = "Light",
+		}
+
+		Library.LoadTheme()
+	end,
+
 	["c00lkidd"] = function()
 		local Old = Settings.Themes.Transparency
 
@@ -2256,7 +2292,7 @@ Command.Run = function(Name, Callbacks)
 			end)
 
 		elseif Name ~= Blank then
-			Utils.Notify("Error", "Command not found", Format("The command <b>%s</b> doesn't exist", Name), 5)
+			Utils.Notify("Error", "Command not found", Format("The given command <b>%s</b> doesn't exist", Name), 5)
 		end
 	end)
 end
@@ -2816,6 +2852,14 @@ Command.Add({
                 Parent = MainTab,
                 Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/scripthubekitten/SCRIPTHUBV3/main/SCRIPTHUBV3", true))()
+                end,
+            })
+
+            Library.new("Button", { Title = "Remote Spy",
+                Description = "Scans for remotes",
+                Parent = MainTab,
+                Callback = function()
+                loadstring(game:HttpGet("https://github.com/exxtremestuffs/SimpleSpySource/raw/master/SimpleSpy.lua"))()
                 end,
             })
 
@@ -8387,16 +8431,6 @@ Command.Add({
 	Plugin = false,
 	Task = function()
 		Env().TPWalk = false
-	end,
-})
-
-Command.Add({
-	Aliases = { "remotespy", "rspy" },
-	Description = "Runs remote spy",
-	Arguments = {},
-	Plugin = false,
-	Task = function()
-		loadstring(game:HttpGet("https://github.com/exxtremestuffs/SimpleSpySource/raw/master/SimpleSpy.lua"))()
 	end,
 })
 
